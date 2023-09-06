@@ -1,37 +1,37 @@
 // How to create a singly linked list and find the middle element of it.
 // Create a node for the linked list.
-function createListNode(value) {
+function Node(value) {
     return {
-        value,
-        next: null
+        nodeValue: value,
+        nextNode: null
     };
 };
 
 // Create a single linked list
-function createSinglyLinkedList() {
+function singlyLinkedList() {
     let head = null;
+    let tail = null;
+
     return Object.freeze({
-        // Insertion
         addNewNode: (value) => {
-            const newNode = createListNode(value);
-            if (head === null) {
+            const newNode = Node(value);
+            if (!head) {
                 head = newNode;
-                console.log("log node value: ", head.value);
-                return head;
-            }          
-            // Set the lastNode.next to be the new node
-            let current = head;
-            while (current.next !== null) {
-                current = current.next;
+                tail = head;
+            } else {
+                tail.nextNode = newNode;
+                tail = newNode;
             }
-            // Current now is the last node of the list
-            current.next = newNode;
-            return head;
-        }
+            return;
+        },
+        displayAllNodeValues: () => {},
+        displayMiddleNodeValue: () => {},
     });
 };
 
-// Insert new node value
-console.log(createSinglyLinkedList().addNewNode("Add Value 'AA'"));
-console.log(createSinglyLinkedList().addNewNode("Add Value 'BB'"));
-
+const linkedList = singlyLinkedList();
+linkedList.addNewNode(10);
+linkedList.addNewNode(9);
+linkedList.addNewNode(8);
+linkedList.addNewNode(7);
+linkedList.addNewNode(6);
