@@ -36,7 +36,20 @@ function singlyLinkedList() {
                 }
             }
         },
-        search: () => {},
+        searchMiddleElement: () => {
+            if (head === null) {
+                console.log("This linked list is empty.");
+                return;
+            } else {
+                let slowPointer = head;
+                let fastPointer = head;
+                while (fastPointer !== null && fastPointer.nextNode !== null) {
+                    slowPointer = slowPointer.nextNode;
+                    fastPointer = fastPointer.nextNode.nextNode;
+                }
+                console.log("Middle element:", slowPointer.nodeValue);
+            }
+        },
         delete: () => {},
     });
 };
@@ -47,4 +60,6 @@ linkedList.insert(9);
 linkedList.insert(8);
 linkedList.insert(7);
 linkedList.insert(6);
+linkedList.insert(5);
 linkedList.access();
+linkedList.searchMiddleElement();
