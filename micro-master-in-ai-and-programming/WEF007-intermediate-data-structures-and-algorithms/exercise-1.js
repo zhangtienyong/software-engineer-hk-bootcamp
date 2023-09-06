@@ -13,7 +13,7 @@ function singlyLinkedList() {
     let tail = null;
 
     return Object.freeze({
-        addNewNode: (value) => {
+        insert: (value) => {
             const newNode = Node(value);
             if (!head) {
                 head = newNode;
@@ -24,14 +24,27 @@ function singlyLinkedList() {
             }
             return;
         },
-        displayAllNodeValues: () => {},
-        displayMiddleNodeValue: () => {},
+        access: () => {
+            if (head === null) {
+                console.log("This linked list is empty.");
+                return;
+            } else {
+                let currentNode = head;
+                while (currentNode !== null) {
+                    console.log(currentNode.nodeValue);
+                    currentNode = currentNode.nextNode;
+                }
+            }
+        },
+        search: () => {},
+        delete: () => {},
     });
 };
 
 const linkedList = singlyLinkedList();
-linkedList.addNewNode(10);
-linkedList.addNewNode(9);
-linkedList.addNewNode(8);
-linkedList.addNewNode(7);
-linkedList.addNewNode(6);
+linkedList.insert(10);
+linkedList.insert(9);
+linkedList.insert(8);
+linkedList.insert(7);
+linkedList.insert(6);
+linkedList.access();
