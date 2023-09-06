@@ -50,7 +50,32 @@ function singlyLinkedList() {
                 console.log("Middle element:", slowPointer.nodeValue);
             }
         },
-        delete: () => {},
+        delete: (value) => {
+            if (head === null) {
+                console.log("This linked list is empty.");
+                return;
+            } else {
+                if (head.nodeValue === value) {
+                    head = head.nextNode;
+                    if (head === null) {
+                        tail = null;
+                    }
+                    return;
+                }
+                let currentNode = head;
+                while (currentNode.nextNode !== null) {
+                    if (currentNode.nextNode.nodeValue === value) {
+                        currentNode.nextNode = currentNode.nextNode.nextNode;
+                        if (currentNode.nextNode === null) {
+                            tail = currentNode;
+                        }
+                        return;
+                    }
+                    currentNode = currentNode.nextNode;
+                }
+                console.log("Node with the specified value not found.");
+            }
+        },
     });
 };
 
@@ -63,3 +88,5 @@ linkedList.insert(6);
 linkedList.insert(5);
 linkedList.access();
 linkedList.searchMiddleElement();
+linkedList.delete(8);
+linkedList.access();
