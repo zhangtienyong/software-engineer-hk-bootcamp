@@ -1,5 +1,22 @@
 body {
-    background-color: #353353;
     padding: 0;
     margin: 0;
+    background-color: #353353;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #353353;
+    padding: 20px 0;
+    border-bottom: solid 1px #4d4b67;
+}
+
+.navbar a {
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.nav-link:focus, .nav-link:hover {
+    color: #FFD15C;
 }
