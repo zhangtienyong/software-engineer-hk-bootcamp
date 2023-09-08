@@ -20,3 +20,27 @@ body {
 .nav-link:focus, .nav-link:hover {
     color: #FFD15C;
 }
+
+.navbar-nav li:not(:last-child) {
+    padding-right: 48px;
+}
+
+.navbar-nav .nav-link.active {
+    color: #FFD15C;
+}
+
+/* Implement Responsive CSS */
+/* Small devices (up to 576px) */
+@media (max-width: 576px) {
+    /* Adjust styles for small screens */
+  }
+  
+  /* Medium devices (between 577px and 992px) */
+  @media (min-width: 577px) and (max-width: 992px) {
+    /* Adjust styles for medium screens */
+  }
+  
+  /* Large devices (above 992px) */
+  @media (min-width: 993px) {
+    /* Adjust styles for large screens */
+  }
