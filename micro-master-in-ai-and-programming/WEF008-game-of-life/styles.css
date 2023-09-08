@@ -1,7 +1,41 @@
 body {
     padding: 0;
     margin: 0;
-    background-color: #353353;
+    min-height: 500vh;
+    background-color: rgb(139, 201, 228);
+    animation: body 1s linear;
+  }
+  @keyframes body {
+    to {
+      background-color: rgb(19, 48, 97);
+    }
+}
+  
+.progress {
+  height: 5px;
+  width: 0%;
+  background-color: #e6bebe;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999; /* Ensure the progress bar is on top of other elements */
+  animation: progress 1s linear;  
+}
+@keyframes progress {
+  to {
+    background-color: rgb(249, 21, 0);
+    width: 100%;
+  }
+}
+
+:root * {
+  /* Pause the animation */
+  animation-play-state: paused;
+  /* Bind the animation to scroll */
+  animation-delay: calc(var(--scroll) * -1s);
+  /* These last 2 properites clean up overshoot weirdness */
+  animation-iteration-count: 1;
+  animation-fill-mode: both;
 }
 
 /* Navbar */
@@ -33,14 +67,14 @@ body {
 /* Small devices (up to 576px) */
 @media (max-width: 576px) {
     /* Adjust styles for small screens */
-  }
+}
   
-  /* Medium devices (between 577px and 992px) */
-  @media (min-width: 577px) and (max-width: 992px) {
+/* Medium devices (between 577px and 992px) */
+@media (min-width: 577px) and (max-width: 992px) {
     /* Adjust styles for medium screens */
-  }
-  
-  /* Large devices (above 992px) */
-  @media (min-width: 993px) {
+}
+
+/* Large devices (above 992px) */
+@media (min-width: 993px) {
     /* Adjust styles for large screens */
-  }
+}
