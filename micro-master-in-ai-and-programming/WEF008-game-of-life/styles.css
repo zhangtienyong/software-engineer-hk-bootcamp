@@ -14,7 +14,7 @@ body {
 .progress {
   height: 5px;
   width: 0%;
-  background-color: #e6bebe;
+  background-color: #a03838;
   position: fixed;
   top: 0;
   left: 0;
@@ -77,4 +77,31 @@ body {
 /* Large devices (above 992px) */
 @media (min-width: 993px) {
     /* Adjust styles for large screens */
+}
+
+/* Section */
+section {
+  display: grid;
+  place-items: center;
+  align-content: center;
+  min-height: 100vh;
+}
+
+.hidden {
+  opacity: 0;
+  filter: blur();
+  transform: translateX(-100%);
+  transition: all 1s;
+}
+
+.show {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateX(0);
+}
+
+@media(prefers-reduced-motion) {
+  .hidden {
+    transition: none;
+  }
 }
