@@ -1,11 +1,19 @@
+/* 
+#f64c60
+#353353
+#FFD15C
+*/
+
 body {
+    font-family: "Rubik", sans-serif;
     margin: 0;
-    background-color: #f9f9ff;
+    background-color: #353353;
+    padding-top: 70px;
   }
-  
-  html{
-    scroll-behavior: smooth;;
-  }
+
+  ul {
+    list-style-type: none;
+}
 
 /* Navbar */
 .navbar {
@@ -33,8 +41,56 @@ body {
 }
 
 /* Section */
-section {
-    min-height: 100vh;
-    padding-top: 100px;
-    background-color: #f9f9ff;
+.home-page {
+    background-color: #353353;
+    color: #FFF;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: 
+    center;
+}
+
+.fa-hand {
+    color: #FFD15C;
+}
+
+.btn-openlink {
+    color: #FFF;
+    background: #FF4C60;
+    border-radius: 60px;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1;
+    padding: 12px 32px;
+    text-decoration: none;
+    margin: 30px 0px 0px 0px;
+}
+
+.btn-openlink i {
+    padding-right: 10px;
+}
+
+
+.logo-image {
+    width: 200px;
+    height: 105px;
+    margin: 30px 0px 50px 0px;
+}
+
+.about-page {
+    background-color: #d53c09;
+}
+
+.experiences-page {
+    background-color: #13d426;
+}
+
+.skills-page {
+    background-color: #2f57e9;
+}
+
+.works-page {
+background-color: #e02a73;
 }
