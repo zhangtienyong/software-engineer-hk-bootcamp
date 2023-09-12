@@ -8,7 +8,12 @@ let nextBoard;
 
 // Control Speed of the Game of Life with a Framerate Slider
 let framerateSlider;
-let framerateValue;
+
+// Start Stop
+let isRunning = false;
+let startButton;
+let stopButton;
+let resetButton;
 
 // Setup
 function setup() {
@@ -36,12 +41,38 @@ function setup() {
   
   // Add an event listener to adjust the framerate when the slider changes
   framerateSlider.input(updateFramerate);
+
+  // Initialize the buttons
+  startButton = select('#start-button');
+  stopButton = select('#stop-button');
+  resetButton = select('#reset-button');
+
+  // Add event listeners to start, stop, and reset the game
+  startButton.mousePressed(startGame);
+  stopButton.mousePressed(stopGame);
+  resetButton.mousePressed(resetGame);
 }
 
 function updateFramerate() {
   const newFramerate = parseFloat(framerateSlider.value());
   frameRate(newFramerate);
   framerateValue.html(`${newFramerate} FPS`);
+}
+
+function startGame() {
+  isRunning = true;
+  loop(); // Start the game loop
+}
+
+function stopGame() {
+  isRunning = false;
+  noLoop(); // Stop the game loop
+}
+
+function resetGame() {
+  isRunning = false;
+  noLoop(); // Stop the game loop
+  init(); // Reset the game state
 }
 
 // Initialize/reset the board state
@@ -118,13 +149,16 @@ function mouseDragged() {
 
 // When mouse is pressed
 function mousePressed() {
-  noLoop();
-  mouseDragged();
+  if (!isRunning) {
+    loop(); // Start the game loop
+  }
 }
 
 // When mouse is released
 function mouseReleased() {
-  loop();
+  if (!isRunning) {
+    noLoop(); // Stop the game loop
+  }
 }
 
 document.querySelector("#reset-game").addEventListener("click", function () {

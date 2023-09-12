@@ -11,6 +11,7 @@
   <body>
     <div class="header">GAME OF LIFE</div>
     <div id="canvas"></div>
+
     <!-- Add a slider to control the framerate -->
     <div class="framerate-control">
       <label for="framerate-slider">Framerate:</label>
@@ -23,6 +24,14 @@
       />
       <span id="framerate-value">30 FPS</span>
     </div>
+
+    <!-- Add Start and Stop buttons -->
+    <div class="control-buttons">
+      <button id="start-button">Start</button>
+      <button id="stop-button">Stop</button>
+      <button id="reset-button">Reset</button>
+    </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.5.0/p5.js"></script>
     <script src="game.js"></script>
   </body>
