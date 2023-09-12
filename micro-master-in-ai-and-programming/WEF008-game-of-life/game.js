@@ -16,6 +16,9 @@ let stopButton;
 let resetButton;
 let randomizeButton;
 
+// Define a darker color for stable cells
+let stableColor = 100;
+
 // Setup
 function setup() {
   const canvas = createCanvas(windowWidth, windowHeight - 100);
@@ -23,7 +26,6 @@ function setup() {
 
   columns = floor(width / unitLength);
   rows = floor(height / unitLength);
-
   currentBoard = [];
   nextBoard = [];
   for (let i = 0; i < columns; i++) {
@@ -109,7 +111,9 @@ function draw() {
   for (let i = 0; i < columns; i++) {
     for (let j = 0; j < rows; j++) {
       if (currentBoard[i][j] == 1) {
-        fill(boxColor);
+        // Check if the cell is stable (not changing state)
+        const isStable = currentBoard[i][j] === nextBoard[i][j];
+        fill(isStable ? stableColor : boxColor);
       } else {
         fill(255);
       }
