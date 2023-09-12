@@ -17,19 +17,29 @@ let resetButton;
 let randomizeButton;
 
 // Define colors for different cell states
-let aliveColor = [255, 0, 0]; // Red for alive cells
-let deadColor = [255]; // White for dead cells
-let stableColor = [100]; // Dark gray for stable cells
+let aliveColor; // Red for alive cells
+let deadColor; // White for dead cells
+let stableColor; // Dark gray for stable cells
+
+// Pattern
+let patternSelector;
+let applyPatternButton;
 
 // Setup
 function setup() {
   const canvas = createCanvas(windowWidth, windowHeight - 100);
   canvas.parent(document.querySelector("#canvas"));
 
+  // Initialize colors
+  aliveColor = color(255, 0, 0); // Red for alive cells
+  deadColor = color(255); // White for dead cells
+  stableColor = color(100); // Dark gray for stable cells
+
   columns = floor(width / unitLength);
   rows = floor(height / unitLength);
   currentBoard = [];
   nextBoard = [];
+
   for (let i = 0; i < columns; i++) {
     currentBoard[i] = [];
     nextBoard[i] = [];
@@ -62,6 +72,13 @@ function setup() {
 
   // Add an event listener to trigger randomization
   randomizeButton.mousePressed(randomizeBoard);
+
+  // Initialize the pattern selector and apply button
+  patternSelector = select('#pattern-selector');
+  applyPatternButton = select('#apply-pattern-button');
+
+  // Add an event listener to apply the selected pattern
+  applyPatternButton.mousePressed(applySelectedPattern);
 }
 
 function updateFramerate() {
@@ -187,6 +204,45 @@ function mouseReleased() {
   if (!isRunning) {
     noLoop(); // Stop the game loop
   }
+}
+
+function applySelectedPattern() {
+  const selectedPattern = patternSelector.value();
+  // Implement logic to place the selected pattern on the board
+  switch (selectedPattern) {
+    case 'random':
+      randomizeBoard();
+      break;
+    case 'glider':
+      applyGliderPattern();
+      break;
+    case 'lwss':
+      applyLWSSPattern();
+      break;
+  }
+}
+
+function applyGliderPattern() {
+  // Glider pattern
+  // This pattern moves diagonally across the board
+  currentBoard[2][1] = 1; // Red cell
+  currentBoard[3][2] = 1;
+  currentBoard[1][3] = 1;
+  currentBoard[2][3] = 1;
+  currentBoard[3][3] = 1;
+}
+
+function applyLWSSPattern() {
+  // Lightweight Spaceship (LWSS) pattern
+  // This pattern moves horizontally across the board
+  currentBoard[2][1] = 1; // Red cell
+  currentBoard[5][1] = 1;
+  currentBoard[6][2] = 1;
+  currentBoard[6][3] = 1;
+  currentBoard[6][4] = 1;
+  currentBoard[5][4] = 1;
+  currentBoard[4][4] = 1;
+  currentBoard[3][3] = 1;
 }
 
 document.querySelector("#reset-game").addEventListener("click", function () {
