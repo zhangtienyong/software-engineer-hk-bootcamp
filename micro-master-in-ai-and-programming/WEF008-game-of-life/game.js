@@ -16,8 +16,10 @@ let stopButton;
 let resetButton;
 let randomizeButton;
 
-// Define a darker color for stable cells
-let stableColor = 100;
+// Define colors for different cell states
+let aliveColor = [255, 0, 0]; // Red for alive cells
+let deadColor = [255]; // White for dead cells
+let stableColor = [100]; // Dark gray for stable cells
 
 // Setup
 function setup() {
@@ -34,21 +36,21 @@ function setup() {
   }
 
   init();
-  
+
   // Initialize the framerate slider element
-  framerateSlider = select('#framerate-slider');
-  framerateValue = select('#framerate-value');
-  
+  framerateSlider = select("#framerate-slider");
+  framerateValue = select("#framerate-value");
+
   // Set an initial framerate
   frameRate(30);
-  
+
   // Add an event listener to adjust the framerate when the slider changes
   framerateSlider.input(updateFramerate);
 
   // Initialize the buttons
-  startButton = select('#start-button');
-  stopButton = select('#stop-button');
-  resetButton = select('#reset-button');
+  startButton = select("#start-button");
+  stopButton = select("#stop-button");
+  resetButton = select("#reset-button");
 
   // Add event listeners to start, stop, and reset the game
   startButton.mousePressed(startGame);
@@ -56,7 +58,7 @@ function setup() {
   resetButton.mousePressed(resetGame);
 
   // Initialize the randomize button
-  randomizeButton = select('#randomize-button');
+  randomizeButton = select("#randomize-button");
 
   // Add an event listener to trigger randomization
   randomizeButton.mousePressed(randomizeBoard);
@@ -85,10 +87,15 @@ function resetGame() {
 }
 
 function randomizeBoard() {
-  // Implement logic to randomly populate currentBoard
+  // Implement logic to randomly populate currentBoard with different colors
   for (let i = 0; i < columns; i++) {
     for (let j = 0; j < rows; j++) {
-      currentBoard[i][j] = random() > 0.5 ? 1 : 0; // Randomly set cells to 1 or 0
+      const randomValue = random();
+      if (randomValue > 0.7) {
+        currentBoard[i][j] = 1; // Alive (red)
+      } else {
+        currentBoard[i][j] = 0; // Dead (white)
+      }
     }
   }
 }
@@ -113,9 +120,9 @@ function draw() {
       if (currentBoard[i][j] == 1) {
         // Check if the cell is stable (not changing state)
         const isStable = currentBoard[i][j] === nextBoard[i][j];
-        fill(isStable ? stableColor : boxColor);
+        fill(isStable ? stableColor : aliveColor);
       } else {
-        fill(255);
+        fill(deadColor);
       }
       stroke(strokeColor);
       rect(i * unitLength, j * unitLength, unitLength, unitLength);
@@ -133,7 +140,8 @@ function generate() {
           if (i == 0 && j == 0) {
             continue;
           }
-          neighbors += currentBoard[(x + i + columns) % columns][(y + j + rows) % rows];
+          neighbors +=
+            currentBoard[(x + i + columns) % columns][(y + j + rows) % rows];
         }
       }
 
@@ -162,7 +170,7 @@ function mouseDragged() {
   const x = Math.floor(mouseX / unitLength);
   const y = Math.floor(mouseY / unitLength);
   currentBoard[x][y] = 1;
-  fill(boxColor);
+  fill(aliveColor);
   stroke(strokeColor);
   rect(x * unitLength, y * unitLength, unitLength, unitLength);
 }
