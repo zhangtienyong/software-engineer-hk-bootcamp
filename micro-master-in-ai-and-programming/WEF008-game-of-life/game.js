@@ -14,6 +14,7 @@ let isRunning = false;
 let startButton;
 let stopButton;
 let resetButton;
+let randomizeButton;
 
 // Setup
 function setup() {
@@ -51,6 +52,12 @@ function setup() {
   startButton.mousePressed(startGame);
   stopButton.mousePressed(stopGame);
   resetButton.mousePressed(resetGame);
+
+  // Initialize the randomize button
+  randomizeButton = select('#randomize-button');
+
+  // Add an event listener to trigger randomization
+  randomizeButton.mousePressed(randomizeBoard);
 }
 
 function updateFramerate() {
@@ -73,6 +80,15 @@ function resetGame() {
   isRunning = false;
   noLoop(); // Stop the game loop
   init(); // Reset the game state
+}
+
+function randomizeBoard() {
+  // Implement logic to randomly populate currentBoard
+  for (let i = 0; i < columns; i++) {
+    for (let j = 0; j < rows; j++) {
+      currentBoard[i][j] = random() > 0.5 ? 1 : 0; // Randomly set cells to 1 or 0
+    }
+  }
 }
 
 // Initialize/reset the board state
