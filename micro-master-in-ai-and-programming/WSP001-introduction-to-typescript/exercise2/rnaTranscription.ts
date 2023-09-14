@@ -1,17 +1,47 @@
 /*
-function leapYear(year) {
-    if (year % 400 === 0) {
-        console.log("Leap Year");
-        return true;
-    } else if (year % 100 === 0) {
-        console.log("Not a Leap Year");
-        return false;
-    } else if (year % 4 === 0) {
-        console.log("Leap Year");
-        return true;
-    } else {
-        console.log("Not a Leap Year");
-        return false;
+function rnaTranscription(dna) {
+  let rna = "";
+  for (let nucleotide of dna) {
+    switch (nucleotide) {
+      case "G":
+        rna += "C";
+        break;
+      case "C":
+        rna += "G";
+        break;
+      case "T":
+        rna += "A";
+        break;
+      case "A":
+        rna += "U";
+        break;
+      default:
+        throw new Error(`The nucleotide ${nucleotide} does not exist`);
     }
+  }
+  return rna;
 }
 */
+
+function rnaTranscription(dna: string): string {
+    let rna = "";
+    for (let nucleotide of dna) {
+      switch (nucleotide) {
+        case "G":
+          rna += "C";
+          break;
+        case "C":
+          rna += "G";
+          break;
+        case "T":
+          rna += "A";
+          break;
+        case "A":
+          rna += "U";
+          break;
+        default:
+          throw new Error(`The nucleotide ${nucleotide} does not exist`);
+      }
+    }
+    return rna;
+  }
