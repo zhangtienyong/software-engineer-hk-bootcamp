@@ -34,3 +34,11 @@ class Monster {
 const player = new Player(20, "Peter");
 const monster = new Monster();
 player.attack(monster);
+
+
+/*
+Player Peter attacks a monster (HP: 80)
+Player Peter attacks a monster (HP: 60)
+Player Peter attacks a monster (HP: 20) [CRITICAL]
+Player Peter attacks a monster (HP: 0)
+*/
