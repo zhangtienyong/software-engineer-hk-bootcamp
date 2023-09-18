@@ -12,6 +12,10 @@ Players can switch by altering a boolean property called usePrimaryAttack which 
 Inside the bracket, you can find the damage of each different type of attack.
 The damage on the monsters should depends on the type of damage.
 
+Bonus Exercise
+Please implement the business logic of each player without declaring each type of player as a separate class. 
+You may be able to get some insight from the following article regarding composition.
+
 */
 
 interface Attack {
