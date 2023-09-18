@@ -18,14 +18,12 @@ class Student {
     }
 }
 
-// 10
 const bob = new Student("Bob", 20);
 bob.learn(8);
 bob.slack(1);
 const bob_score = bob.learningLevel;
 console.log(bob_score);
 
-// 20
 const annie = new Student("Annie", 25);
 annie.learn(15);
 annie.slack(3);
