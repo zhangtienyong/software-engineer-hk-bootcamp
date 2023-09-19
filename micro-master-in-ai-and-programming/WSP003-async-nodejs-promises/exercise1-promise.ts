@@ -1,5 +1,7 @@
 const fs = require('fs');
 
+const myPath = "/Users/tien/Development/software-engineer-bootcamp/micro-master-in-ai-and-programming/WSP003-async-nodejs-promises/node_modules/ts-node/dist";
+
 function listAllJs(targetPath: string): Promise<string[]> {
   return new Promise<string[]>((resolve, reject): void => {
     fs.readdir(targetPath, (err: any, files: any): void => {
@@ -15,7 +17,6 @@ function listAllJs(targetPath: string): Promise<string[]> {
   });
 }
 
-const myPath = "/Users/tien/Development/software-engineer-bootcamp/micro-master-in-ai-and-programming/WSP003-async-nodejs-promises/node_modules/ts-node/dist";
 
 listAllJs(myPath)
   .then((jsFiles: string[]): void => {
