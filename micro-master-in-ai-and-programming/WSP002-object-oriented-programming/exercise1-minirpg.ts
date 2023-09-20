@@ -20,6 +20,7 @@ class Player {
     }
   
     attack(monster: Monster) {
+        //
     }
   
     gainExperience(exp: number) {

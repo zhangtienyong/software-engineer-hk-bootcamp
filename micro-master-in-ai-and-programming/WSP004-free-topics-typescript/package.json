@@ -1,0 +1,17 @@
+{
+  "name": "wsp004-free-topics-typescript",
+  "version": "1.0.0",
+  "description": "",
+  "main": "daily-challenge.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^20.6.3",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.2.2"
+  }
+}
