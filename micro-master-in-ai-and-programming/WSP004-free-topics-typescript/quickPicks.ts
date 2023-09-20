@@ -1,7 +1,5 @@
 import checkMarkSix from './mark-six-checker';
 
-//console.log(checkMarkSix([1, 3, 5, 7, 9, 11], [1, 3]));
-
 function quickPicks(markSixResult: number[], numberOfBids: number): { bid: number[], win: boolean }[] {
     const result: { bid: number[], win: boolean }[] = [];
   
