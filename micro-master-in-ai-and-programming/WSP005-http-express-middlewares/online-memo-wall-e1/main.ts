@@ -30,44 +30,38 @@ app.use((req: Request, res: Response, next: NextFunction): void => {
 });
 
 // 3. Middleware for logging static file requests
-app.get("/", function (req: Request, res: Response): void {
+app.get("/", (req: Request, res: Response): void => {
   console.log(`[${new Date().toISOString()}] Request `, req.path);
   res.sendFile(path.join(publicPath, "index.html"));
 });
 
-app.get("/404.html", (req: Request, res: Response, next: NextFunction): void => {
+app.get("/404.html", (req: Request, res: Response): void => {
   console.log(`[${new Date().toISOString()}] Request `, req.path);
-  next();
 });
 
-
-app.get("/index.html", (req: Request, res: Response, next: NextFunction): void => {
+app.get("/404.html", (req: Request, res: Response): void => {
   console.log(`[${new Date().toISOString()}] Request `, req.path);
-  next();
 });
 
-app.get("/css/index.css", (req: Request, res: Response, next: NextFunction): void => {
+app.get("/css/index.css", (req: Request, res: Response): void => {
   console.log(`[${new Date().toISOString()}] Request `, req.path);
-  next();
 });
 
-app.get("/img/wall.jpg", (req: Request, res: Response, next: NextFunction): void => {
+app.get("/img/wall.jpg", (req: Request, res: Response): void => {
   console.log(`[${new Date().toISOString()}] Request `, req.path);
-  next();
 });
 
-app.get("/js/index.js", (req: Request, res: Response, next: NextFunction): void => {
+app.get("/js/index.js", (req: Request, res: Response): void => {
   console.log(`[${new Date().toISOString()}] Request `, req.path);
-  next();
-});
-
-// 2. Catch-all middleware for handling 404 errors
-app.use( function(req: Request, res: Response, next: NextFunction): void {
-  res.sendFile(path.resolve("./public/404.html"));
 });
 
 const publicPath: string = path.join(__dirname, "public");
 app.use(express.static(publicPath));
+
+// 2. Catch-all middleware for handling 404 errors
+app.use((req: Request, res: Response, next: NextFunction): void => {
+  res.sendFile(path.resolve("./public/404.html"));
+});
 
 const PORT = 8080;
 app.listen(PORT, (): void => {
