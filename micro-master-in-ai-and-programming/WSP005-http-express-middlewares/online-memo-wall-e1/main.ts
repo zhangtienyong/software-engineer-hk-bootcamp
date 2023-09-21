@@ -61,13 +61,13 @@ app.get("/js/index.js", (req: Request, res: Response, next: NextFunction): void 
   next();
 });
 
-const publicPath: string = path.join(__dirname, "public");
-app.use(express.static(publicPath));
-
 // 2. Catch-all middleware for handling 404 errors
 app.use( function(req: Request, res: Response, next: NextFunction): void {
   res.sendFile(path.resolve("./public/404.html"));
 });
+
+const publicPath: string = path.join(__dirname, "public");
+app.use(express.static(publicPath));
 
 const PORT = 8080;
 app.listen(PORT, (): void => {
