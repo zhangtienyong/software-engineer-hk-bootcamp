@@ -1,0 +1,26 @@
+html,
+body {
+    font-family: "Rubik", sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.navbar {
+    height: 70px;
+    padding: 10px 24px;
+    box-shadow: 0 5px 20px 0 #c0bebe;
+}
+
+.navbar-nav {
+    margin: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.login-btn {
+    margin-right: 20px;
+}
